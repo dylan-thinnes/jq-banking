@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+for file in *.csv; do
+  target=${file%.csv}.json # unused
+  cat $file | ./csv2json
+done | jq -s 'add'

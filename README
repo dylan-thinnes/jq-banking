@@ -1,0 +1,9 @@
+All of my banking history is exported from Bank Of Scotland in CSV format,
+available in years in `raw/`.
+
+`./generate-bank-history` takes these CSVs, converts them to JSON, concatenates
+them into a single JSON blob, cleans them up, and writes the result to
+`./bank-history.json`.
+
+All scripts import `utils.jq`, which provides `bank-history.json` in the
+`all_data` variable, and utilities for querying it.

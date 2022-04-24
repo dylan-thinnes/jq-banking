@@ -1,0 +1,4 @@
+(
+  cd raw
+  ./combine-csvs-to-json | ./clean-up-json
+) > ./bank-history.json

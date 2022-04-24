@@ -1,0 +1,15 @@
+#!/usr/bin/env -S jq -f
+map({
+  description: ."Transaction Description",
+  timestamp: ."Transaction Date" | strptime("%d/%m/%Y") | mktime,
+  account: ."Account Number" | tonumber,
+  sort_code: ."Sort Code" | .[1:],
+  type: ."Transaction Type",
+  debit: ."Debit Amount" | (try tonumber catch null),
+  credit: ."Credit Amount" | (try tonumber catch null),
+  balance: ."Balance"
+}
+| .date = (.timestamp | todate)
+| map_values(values)
+)
+| .[]
